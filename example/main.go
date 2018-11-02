@@ -10,12 +10,16 @@ func main() {
 
 	l := luna.New()
 	g := gin.Default()
+
+	g.LoadHTMLFiles("example/files/index.html")
+	g.Static("/assets", "./example/assets")
+
 	g.GET("/ws/connect", func(context *gin.Context) {
 		l.HandleHttpRequest(context.Writer, context.Request)
 	})
 
 	g.GET("/home", func(context *gin.Context) {
-		context.JSON(200, gin.H{"message" : "Hello"})
+		context.HTML(200, "index.html", nil)
 	})
 
 	l.Handle("/rooms/{id}/message", func(c *luna.Context) {
@@ -24,8 +28,9 @@ func main() {
 
 		//Db.Save(c.Data)
 		vars := c.Vars //Grab path parameters
-		fmt.Println(vars["id"] . (string))
+		fmt.Println("Id => ", vars["id"] . (string))
 		fmt.Println("Got message from path => " +  c.Path)
+		fmt.Println("Data => ", c.Data)
 	})
 
 	g.Run("0.0.0.0:8009")

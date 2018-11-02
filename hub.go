@@ -19,9 +19,8 @@ func (h *Hub) Subscribe(id string, session *melody.Session) *Channel {
 
 	ch := h.GetChannel(id)
 	if ch == nil { //create channel if this is the first time or if channel does not not exists
-		ch := &Channel{}
+		ch = &Channel{}
 		ch.Id = id
-		ch.Mtx = &sync.Mutex{}
 
 		h.Channels = append(h.Channels, ch)
 	}
@@ -87,7 +86,7 @@ type Client struct {
 type Channel struct {
 
 	Id string
-	Mtx *sync.Mutex
+	Mtx sync.Mutex
 	Clients []*Client
 }
 

@@ -60,7 +60,6 @@ func (l *Luna) handleMessages() {
 
 	l.melody.HandleMessage(func(session *melody.Session, bytes []byte) {
 
-		fmt.Println("New Message => ", string(bytes))
 		message := &WsMessage{}
 		err := json.Unmarshal(bytes, message)
 		if err != nil {

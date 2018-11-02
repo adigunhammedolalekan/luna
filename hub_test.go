@@ -8,10 +8,10 @@ import (
 func TestChannel_Subscribe(t *testing.T) {
 
 	sess := &melody.Session{}
-	id := "/user/22/message"
+	id := "/rooms/22/message"
 
 	h := &Hub{
-		Channels: make([] *Channel, 0),
+		Channels: make([]*Channel, 0),
 	}
 
 	h.Subscribe(id, sess)
