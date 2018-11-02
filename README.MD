@@ -2,7 +2,7 @@
 Handle websocket connections and channel like rest api endpoints
 
 ## Why
-Websocket servers are little bit tricky and not very easy to build, we love to fall back to easy alternative BaaS platform like Firebase to handle realtime processing in our apps.
+Websocket servers are little bit tricky and not very easy to build, we normally fall back to easy alternative BaaS platform like Firebase to handle realtime data processing in our apps.
 
 Luna aims to simplify how you interact with websockets by letting you define channels as endpoints So it feels like you can actually send a message to a websocket channel by calling an endpoint.
 
