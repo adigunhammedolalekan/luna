@@ -61,9 +61,11 @@ func (h *Hub) EnsureClean()  {
 
 			for i, v := range ch.Clients {
 
-				if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
+				if v != nil {
+					if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
 
-					ch.Clients[i] = nil
+						ch.Clients[i] = nil
+					}
 				}
 			}
 		}
