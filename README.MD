@@ -33,7 +33,7 @@ http.Handle("/ws/connect", func(w http.ResponseWriter, r *http.Request) {
 })
 
 //Using Gin
-g := gin.Defaults()
+g := gin.Default()
 g.GET("/ws/connect", func(context *gin.Context) {
 	l.HandleHttpRequest(context.Writer, context.Request)
 })
@@ -72,6 +72,7 @@ As you can see, you can set up a websocket server with 2 lines of code using Lun
 
 func main() {
 
+	g := gin.Default()
 	l := luna.New() //create luna
 
 	g.GET("/ws/connect", func(c *gin.Context) {
