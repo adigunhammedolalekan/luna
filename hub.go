@@ -64,6 +64,7 @@ func (h *Hub) EnsureClean()  {
 				if v != nil {
 					if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
 
+						//removing items from Go slice is kind of messy so i set it to nil instead
 						ch.Clients[i] = nil
 					}
 				}
