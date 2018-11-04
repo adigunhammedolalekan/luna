@@ -29,7 +29,7 @@ Allow luna to handle websocket connection requests
 //Using Go default http stack
 http.Handle("/ws/connect", func(w http.ResponseWriter, r *http.Request) {
 	//This is a websocket connection, allow luna to handle it
-	luna.HandleHttpRequest(w, r)
+	l.HandleHttpRequest(w, r)
 })
 
 //Using Gin
@@ -48,7 +48,9 @@ Create json data payload from clients(Js frontend, Android, iOS etc) and use any
 	"action" : "subscribe",
 	"path" : "/rooms/22/message"
 }
-/*This payload simply subscribe the WS client that sends it to path/channel `/room/22/message`, after subscription, all messages received by `/rooms/22/message` would be sent to this clients and every other clients that subscribed
+/*This payload simply subscribe the WS client that sends it to path/channel 
+`/room/22/message`, after subscription, all messages received by `/rooms/22/message`
+ would be sent to this client and every other clients that subscribed
 */
 
 //Example message payload
