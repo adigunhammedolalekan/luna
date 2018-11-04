@@ -1,4 +1,4 @@
-# Luna
+# Luna [![Made in Nigeria](https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square)](https://github.com/acekyd/made-in-nigeria)
 Handle websocket connections and events like rest api endpoints
 
 ## Why
@@ -107,5 +107,3 @@ A full example with a Javascript client can be found in example folder
 Thanks to [@olahol](https://github.com/olahol) for creating [melody](https://github.com/olahol/melody).
 
 Follow me on Twitter [@L3kanAdigun](https://twitter.com/L3kanAdigun), my DM is open, come ask me questions!
-
-[![Made in Nigeria](https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square)](https://github.com/acekyd/made-in-nigeria)
