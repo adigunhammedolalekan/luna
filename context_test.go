@@ -14,15 +14,15 @@ func TestExtractParams(t *testing.T) {
 		t.Error(err.Error())
 	}
 
-	if name, ok := vars["name"] . (string); !ok || name != "luna" {
+	if name, ok := vars["name"].(string); !ok || name != "luna" {
 		t.Error("Expected named param {name} to be luna")
 	}
 }
 
 func TestMatch(t *testing.T) {
 
-	paths := []string {"/hello/lekan/go/hammed", "/hello/12/get", "/hello/lekan/get/12"}
-	regs := []string {"/hello/{name}/go/{param}", "/hello/{id}/get", "/hello/{name}/get/{id}"}
+	paths := []string{"/hello/lekan/go/hammed", "/hello/12/get", "/hello/lekan/get/12"}
+	regs := []string{"/hello/{name}/go/{param}", "/hello/{id}/get", "/hello/{name}/get/{id}"}
 
 	for i, v := range paths {
 

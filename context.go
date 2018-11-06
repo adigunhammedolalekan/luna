@@ -6,13 +6,12 @@ import (
 )
 
 type Context struct {
-
 	Path string
-	Vars map[string] interface{}
+	Vars map[string]interface{}
 	Data interface{}
 }
 
-func Match(pattern, path string) bool {
+func MatchRoute(pattern, path string) bool {
 
 	namedParamsCount := 0
 	patternParts := strings.Split(pattern, "/")
@@ -24,7 +23,7 @@ func Match(pattern, path string) bool {
 
 	for _, v := range patternParts {
 
-		if strings.HasPrefix(v, "{") && strings.HasSuffix(v, "}"){
+		if strings.HasPrefix(v, "{") && strings.HasSuffix(v, "}") {
 			namedParamsCount++
 		}
 	}
@@ -40,22 +39,22 @@ func Match(pattern, path string) bool {
 	return unMatchedCount == namedParamsCount
 }
 
-func ExtractParams(template, path string) (map[string] interface{}, error) {
+func ExtractParams(template, path string) (map[string]interface{}, error) {
 
-	data := make(map[string] interface{})
+	data := make(map[string]interface{})
 
 	templateParts := strings.Split(template, "/")
 	pathParts := strings.Split(path, "/")
 
 	if len(templateParts) != len(pathParts) {
 
-		return make(map[string] interface{}), fmt.Errorf("Template and path does not match! %s %s", template, path)
+		return make(map[string]interface{}), fmt.Errorf("Template and path does not match! %s %s", template, path)
 	}
 
 	for i, p := range templateParts {
 
-		if strings.HasPrefix(p, "{") && strings.HasSuffix(p, "}"){
-			name := p[1 : len(p) - 1]
+		if strings.HasPrefix(p, "{") && strings.HasSuffix(p, "}") {
+			name := p[1 : len(p)-1]
 			data[name] = pathParts[i]
 		}
 	}
