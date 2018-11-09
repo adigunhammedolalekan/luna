@@ -25,8 +25,6 @@ func (h *Hub) Subscribe(id string, session *melody.Session) *Channel {
 		h.Channels = append(h.Channels, ch)
 	}
 
-	h.UnSubscribe(id, session) //Overwrite previous subscription to avoid duplicate event broadcasting
-
 	ch.Subscribe(session)
 	return ch
 }
@@ -131,6 +129,7 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 	ch.Clients[client] = true
 }
 
+//UnSubscribe removes a session from a channel
 func (ch *Channel) UnSubscribe(session *melody.Session) {
 
 	ch.Lock()
