@@ -65,6 +65,13 @@ payload = {
 }
 
 //This payload would send payload.data to every clients that has subscribed to `/rooms/22/message` channel/path. Amazing!
+
+To stop receiving messages on the client side(i.e UnSubscribe from a channel)
+{
+    "action" : "unsubscribe",
+    "path" : "/rooms/22/message"
+}
+
 ```
 
 As you can see, you can set up a websocket server with 2 lines of code using Luna.

@@ -26,7 +26,7 @@ func TestMatch(t *testing.T) {
 
 	for i, v := range paths {
 
-		if !Match(regs[i], v) {
+		if !MatchRoute(regs[i], v) {
 			t.Error("Failed to match route")
 		}
 	}

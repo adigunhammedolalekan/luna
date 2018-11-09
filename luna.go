@@ -10,6 +10,7 @@ import (
 var (
 	COMMAND_SUBSCRIBE = "subscribe"
 	COMMAND_MESSAGE   = "message"
+	COMMAND_UNSUBSCRIBE = "unsubscribe"
 )
 
 type Luna struct {
@@ -74,6 +75,8 @@ func (l *Luna) handleMessages() {
 
 		case COMMAND_SUBSCRIBE:
 			l.hub.Subscribe(message.Path, session)
+		case COMMAND_UNSUBSCRIBE:
+			l.hub.UnSubscribe(message.Path, session)
 		case COMMAND_MESSAGE:
 			l.hub.Send(message.Path, message.Data)
 			for _, route := range l.routes {

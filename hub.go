@@ -20,13 +20,23 @@ func (h *Hub) Subscribe(id string, session *melody.Session) *Channel {
 	if ch == nil { //create channel if this is the first time or if channel does not not exists
 		ch = &Channel{}
 		ch.Id = id
-		ch.Clients = make(map[*Client] bool)
+		ch.Clients = make(map[*Client]bool)
 
 		h.Channels = append(h.Channels, ch)
 	}
 
+	h.UnSubscribe(id, session) //Overwrite previous subscription to avoid duplicate event broadcasting
+
 	ch.Subscribe(session)
 	return ch
+}
+
+func (h *Hub) UnSubscribe(id string, session *melody.Session) {
+
+	ch := h.GetChannel(id)
+	if ch != nil {
+		ch.UnSubscribe(session)
+	}
 }
 
 //GetChannel returns a Channel identified by @param id
@@ -77,6 +87,17 @@ func (h *Hub) Count() int {
 	return len(h.Channels)
 }
 
+//ClientsCount returns no of connected clients in a channel
+func (h *Hub) ClientsCount(id string) int {
+
+	ch := h.GetChannel(id)
+	if ch != nil {
+		return len(ch.Clients)
+	}
+
+	return 0
+}
+
 type Client struct {
 	Session  *melody.Session
 	LastSeen time.Time
@@ -108,6 +129,19 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 	client.Session = session
 	client.LastSeen = time.Now()
 	ch.Clients[client] = true
+}
+
+func (ch *Channel) UnSubscribe(session *melody.Session) {
+
+	ch.Lock()
+	defer ch.UnLock()
+
+	for v := range ch.Clients {
+
+		if v.Session.Id == session.Id {
+			delete(ch.Clients, v)
+		}
+	}
 }
 
 //Send broadcast message to all connected clients and update their last activity time
