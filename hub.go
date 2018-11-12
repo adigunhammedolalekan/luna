@@ -137,7 +137,7 @@ func (ch *Channel) UnSubscribe(session *melody.Session) {
 
 	for v := range ch.Clients {
 
-		if v.Session.Id == session.Id {
+		if v.Session == session {
 			delete(ch.Clients, v)
 		}
 	}

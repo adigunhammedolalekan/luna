@@ -22,18 +22,11 @@ func main() {
 		context.HTML(200, "index.html", nil)
 	})
 
-	l.Handle("/rooms/{id}/message", func(c *luna.Context) {
-		//Message has been sent to appropriate Websocket clients.
-		//do other stuffs here, like saving message into a persistence layer?
+	l.Handle("/rooms/{id}/message", func(context *luna.Context) {
 
-		//Db.Save(c.Data)
-		vars := c.Vars //Grab path parameters
-		fmt.Println("Id => ", vars["id"] . (string))
-		fmt.Println("Got message from path => " +  c.Path)
-		fmt.Println("Data => ", c.Data)
+		fmt.Println("Path => ", context.Vars)
+		fmt.Println("Message => ", context.Data)
 	})
 
 	g.Run("0.0.0.0:8009")
 }
-
-

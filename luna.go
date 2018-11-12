@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	COMMAND_SUBSCRIBE = "subscribe"
-	COMMAND_MESSAGE   = "message"
+	COMMAND_SUBSCRIBE   = "subscribe"
+	COMMAND_MESSAGE     = "message"
 	COMMAND_UNSUBSCRIBE = "unsubscribe"
 )
 
@@ -54,9 +54,9 @@ func (l *Luna) Handle(path string, f OnMessageHandler) {
 	l.routes = append(l.routes, route)
 }
 
-func (l *Luna) HandleHttpRequest(wr http.ResponseWriter, req *http.Request) {
+func (l *Luna) HandleHttpRequest(wr http.ResponseWriter, req *http.Request) error {
 
-	l.melody.HandleRequest(wr, req)
+	return l.melody.HandleRequest(wr, req)
 }
 
 //handleMessages starts to listen for new websocket events on a seperate goroutine
@@ -64,6 +64,7 @@ func (l *Luna) handleMessages() {
 
 	l.melody.HandleMessage(func(session *melody.Session, bytes []byte) {
 
+		fmt.Println("New Message => ", string(bytes))
 		message := &WsMessage{}
 		err := json.Unmarshal(bytes, message)
 		if err != nil {

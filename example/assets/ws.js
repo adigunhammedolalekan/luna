@@ -1,5 +1,5 @@
 
-var ws = new WebSocket("ws://192.168.43.39:8009/ws/connect");
+var ws = new WebSocket("ws://localhost:8009/ws/connect");
 var roomId = "22"; //Should be a real/dynamic room ID for a real application
 ws.onopen = function () {
 

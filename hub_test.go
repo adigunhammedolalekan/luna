@@ -31,7 +31,6 @@ func TestChannel_Subscribe(t *testing.T) {
 func TestChannel_UnSubscribe(t *testing.T) {
 
 	sess := &melody.Session{}
-	sess.Id = "sess12"
 
 	id := "/rooms/22/message"
 
@@ -41,7 +40,6 @@ func TestChannel_UnSubscribe(t *testing.T) {
 
 	h.Subscribe(id, sess)
 	sess2 := &melody.Session{}
-	sess2.Id = "sess13"
 	h.Subscribe(id, sess2)
 
 	if h.Count() != 1 {
