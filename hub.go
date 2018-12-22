@@ -2,7 +2,6 @@ package luna
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/olahol/melody"
 	"sync"
 	"time"
@@ -51,12 +50,14 @@ func (h *Hub) GetChannel(id string) *Channel {
 }
 
 //Send sends data payload to a channel. This broadcast @params data to all connected clients
-func (h *Hub) Send(channel string, data interface{}) {
+func (h *Hub) Send(channel string, data interface{}) error {
 
 	ch := h.GetChannel(channel)
 	if ch != nil {
-		ch.Send(data)
+		return ch.Send(data)
 	}
+
+	return nil
 }
 
 //EnsureClean keep clients slice clean. Remove all clients that has been idle for more than 10minutes
@@ -144,12 +145,11 @@ func (ch *Channel) UnSubscribe(session *melody.Session) {
 }
 
 //Send broadcast message to all connected clients and update their last activity time
-func (ch *Channel) Send(data interface{}) {
+func (ch *Channel) Send(data interface{}) error {
 
 	value, err := json.Marshal(data)
 	if err != nil {
-		fmt.Println("Error while mashalling JSON ", err)
-		return
+		return err
 	}
 
 	ch.Lock()
@@ -162,4 +162,6 @@ func (ch *Channel) Send(data interface{}) {
 			v.LastSeen = time.Now()
 		}
 	}
+
+	return nil
 }

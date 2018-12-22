@@ -50,7 +50,7 @@ func (l *Luna) Handle(path string, f OnMessageHandler) {
 
 	route := &Route{}
 	route.Path = path
-	route.OnMessage = f
+	route.OnNewMessage = f
 	l.routes = append(l.routes, route)
 }
 
@@ -64,7 +64,6 @@ func (l *Luna) handleMessages() {
 
 	l.melody.HandleMessage(func(session *melody.Session, bytes []byte) {
 
-		fmt.Println("New Message => ", string(bytes))
 		message := &WsMessage{}
 		err := json.Unmarshal(bytes, message)
 		if err != nil {
@@ -84,13 +83,13 @@ func (l *Luna) handleMessages() {
 
 				if MatchRoute(route.Path, message.Path) {
 
-					if route.OnMessage != nil {
+					if route.OnNewMessage != nil {
 						ctx := &Context{}
 						ctx.Path = message.Path
 						ctx.Vars, _ = ExtractParams(route.Path, message.Path)
 						ctx.Data = message.Data
 
-						route.OnMessage(ctx)
+						route.OnNewMessage(ctx)
 					}
 				}
 			}
@@ -98,9 +97,15 @@ func (l *Luna) handleMessages() {
 	})
 }
 
+// Publish sends @param data to channel @param channel
+func (l *Luna) Publish(channel string, data interface{}) error {
+	return l.hub.Send(channel, data)
+}
+
+//
 type OnMessageHandler func(context *Context)
 
 type Route struct {
 	Path      string
-	OnMessage OnMessageHandler
+	OnNewMessage OnMessageHandler
 }
