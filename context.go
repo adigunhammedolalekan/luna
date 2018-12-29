@@ -11,6 +11,8 @@ type Context struct {
 	Data interface{}
 }
 
+// MatchRoute checks if path matches the patten supplied.
+// E.g pattern=/rooms/{id}/messages will match path=/rooms/12/messages
 func MatchRoute(pattern, path string) bool {
 
 	namedParamsCount := 0
@@ -39,6 +41,7 @@ func MatchRoute(pattern, path string) bool {
 	return unMatchedCount == namedParamsCount
 }
 
+// ExtractParams extracts data from path parameter.
 func ExtractParams(template, path string) (map[string]interface{}, error) {
 
 	data := make(map[string]interface{})

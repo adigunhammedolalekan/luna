@@ -7,12 +7,12 @@ import (
 	"time"
 )
 
-//Hub holds all channels in a slice. Clients can subscribe and send message to channels through the Hub
+// Hub holds all channels in a slice. Clients can subscribe and send message to channels through the Hub
 type Hub struct {
 	Channels []*Channel //Slice of channels in this Hub
 }
 
-//Subscribe subscribes a client to a channel. Create channel if it does not exists before
+// Subscribe subscribes a client to a channel. Create channel if it does not exists before
 func (h *Hub) Subscribe(id string, session *melody.Session) *Channel {
 
 	ch := h.GetChannel(id)
@@ -49,7 +49,7 @@ func (h *Hub) GetChannel(id string) *Channel {
 	return nil
 }
 
-//Send sends data payload to a channel. This broadcast @params data to all connected clients
+// Send sends data payload to a channel. This broadcast @params data to all connected clients
 func (h *Hub) Send(channel string, data interface{}) error {
 
 	ch := h.GetChannel(channel)
@@ -60,20 +60,23 @@ func (h *Hub) Send(channel string, data interface{}) error {
 	return nil
 }
 
-//EnsureClean keep clients slice clean. Remove all clients that has been idle for more than 10minutes
+// EnsureClean keep clients slice clean. Remove all clients that has been idle for more than 10minutes
 func (h *Hub) EnsureClean() {
 
+	ticker := time.NewTicker(10 * time.Minute)
 	for {
-		time.Sleep(10 * time.Minute) //Run every 10min
 
-		for _, ch := range h.Channels {
+		select {
+		case <- ticker.C:
+			for _, ch := range h.Channels {
 
-			for v := range ch.Clients {
+				for v := range ch.Clients {
 
-				if v != nil {
-					if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
+					if v != nil {
+						if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
 
-						delete(ch.Clients, v)
+							delete(ch.Clients, v)
+						}
 					}
 				}
 			}
@@ -81,12 +84,12 @@ func (h *Hub) EnsureClean() {
 	}
 }
 
-//Count returns number of connected channels
+// Count returns number of connected channels
 func (h *Hub) Count() int {
 	return len(h.Channels)
 }
 
-//ClientsCount returns no of connected clients in a channel
+// ClientsCount returns no of connected clients in a channel
 func (h *Hub) ClientsCount(id string) int {
 
 	ch := h.GetChannel(id)

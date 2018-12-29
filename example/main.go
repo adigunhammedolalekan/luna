@@ -24,7 +24,7 @@ func main() {
 
 	l.Handle("/rooms/{id}/message", func(context *luna.Context) {
 
-		fmt.Println("Path => ", context.Vars)
+		fmt.Println("Path Data => ", context.Vars)
 		fmt.Println("Message => ", context.Data)
 	})
 

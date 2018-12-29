@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/olahol/melody"
 	"net/http"
+	"strings"
 )
 
 var (
@@ -47,6 +48,12 @@ func New() *Luna {
 
 //Handle registers a new Route
 func (l *Luna) Handle(path string, f OnMessageHandler) {
+
+	//normalize path to form /address/to/path
+	//not address/to/path
+	if !strings.HasPrefix("/", path) {
+		path = "/" + path
+	}
 
 	route := &Route{}
 	route.Path = path
@@ -106,6 +113,6 @@ func (l *Luna) Publish(channel string, data interface{}) error {
 type OnMessageHandler func(context *Context)
 
 type Route struct {
-	Path      string
+	Path         string
 	OnNewMessage OnMessageHandler
 }
