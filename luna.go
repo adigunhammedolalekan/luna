@@ -99,14 +99,18 @@ func (l *Luna) handleMessages() {
 			l.hub.Send(message.Path, message.Data)
 			for _, route := range l.routes {
 
+				fmt.Println("Route => ", route.Path)
+				fmt.Println("Message Route => ", message.Path)
 				if MatchRoute(route.Path, message.Path) {
 
+					fmt.Println("Match!")
 					if route.OnNewMessage != nil {
 						ctx := &Context{}
 						ctx.Path = message.Path
 						ctx.Vars, _ = ExtractParams(route.Path, message.Path)
 						ctx.Data = message.Data
 
+						fmt.Println("Called")
 						route.OnNewMessage(ctx)
 					}
 				}
