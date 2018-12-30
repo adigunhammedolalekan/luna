@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/olahol/melody"
 	"net/http"
-	"strings"
 )
 
 var (
@@ -64,12 +63,6 @@ func New(config *Config) *Luna {
 
 //Handle registers a new Route
 func (l *Luna) Handle(path string, f OnMessageHandler) {
-
-	//normalize path to form /address/to/path
-	//not address/to/path
-	if !strings.HasPrefix("/", path) {
-		path = "/" + path
-	}
 
 	route := &Route{}
 	route.Path = path

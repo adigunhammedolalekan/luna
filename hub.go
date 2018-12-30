@@ -130,6 +130,10 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 	subscribed := false
 	for k := range ch.Clients {
 
+		if k == nil {
+			continue
+		}
+
 		// check if session is already subscribed to channel
 		if !k.Session.IsClosed() && (extractSessionKey(k.Session) == extractSessionKey(session)) {
 			subscribed = true
