@@ -80,7 +80,8 @@ As you can see, you can set up a websocket server with 2 lines of code using Lun
 func main() {
 
 	g := gin.Default()
-	l := luna.New() //create luna
+	l := luna.New(nil) //create luna, use default configuration
+	//or l := luna.New(&luna.Config{BufferSize: 512 * 10, MaxMessageSize: 512 * 10})
 
 	g.GET("/ws/connect", func(c *gin.Context) {
 		l.HandleHttpRequest(c.Writer, c.Request)

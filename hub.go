@@ -127,10 +127,24 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 	ch.Lock()
 	defer ch.UnLock()
 
-	client := &Client{}
-	client.Session = session
-	client.LastSeen = time.Now()
-	ch.Clients[client] = true
+	subscribed := false
+	for k := range ch.Clients {
+
+		// check if session is already subscribed to channel
+		if !k.Session.IsClosed() && k.Session == session {
+			subscribed = true
+			break
+		}
+	}
+
+	// subscribe to channel if
+	//
+	if !subscribed {
+		client := &Client{}
+		client.Session = session
+		client.LastSeen = time.Now()
+		ch.Clients[client] = true
+	}
 }
 
 //UnSubscribe removes a session from a channel

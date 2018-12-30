@@ -26,13 +26,29 @@ type WsMessage struct {
 	Data   interface{} `json:"data"`
 }
 
+// Config holds luna configuration data
+type Config struct {
+
+	BufferSize int
+	MaxMessageSize int64
+}
+
+var DefaultConfig = &Config{BufferSize: 512 * 10, MaxMessageSize: 512 * 10}
+
 //New creates a new Luna instance
-func New() *Luna {
+func New(config *Config) *Luna {
 
 	m := melody.New()
 	h := &Hub{
 		Channels: make([]*Channel, 0),
 	}
+
+	if config == nil {
+		config = DefaultConfig
+	}
+
+	m.Config.MessageBufferSize = config.BufferSize
+	m.Config.MaxMessageSize = config.MaxMessageSize
 
 	go h.EnsureClean()
 
