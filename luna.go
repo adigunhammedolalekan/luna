@@ -79,7 +79,9 @@ func (l *Luna) Handle(path string, f OnMessageHandler) {
 
 func (l *Luna) HandleHttpRequest(wr http.ResponseWriter, req *http.Request) error {
 
-	return l.melody.HandleRequest(wr, req)
+	keys := make(map[string] interface{})
+	keys["session_token"] = req.Header.Get("Authorization")
+	return l.melody.HandleRequestWithKeys(wr, req, keys)
 }
 
 //handleMessages starts to listen for new websocket events on a seperate goroutine

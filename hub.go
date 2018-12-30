@@ -131,20 +131,31 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 	for k := range ch.Clients {
 
 		// check if session is already subscribed to channel
-		if !k.Session.IsClosed() && k.Session == session {
+		if !k.Session.IsClosed() && (extractSessionKey(k.Session) == extractSessionKey(session)) {
 			subscribed = true
 			break
 		}
 	}
 
 	// subscribe to channel if
-	//
 	if !subscribed {
 		client := &Client{}
 		client.Session = session
 		client.LastSeen = time.Now()
 		ch.Clients[client] = true
 	}
+}
+
+func extractSessionKey(session *melody.Session) string {
+
+	if key, ok := session.Keys["session_token"]; ok {
+		value, ok := key . (string)
+		if ok {
+			return value
+		}
+	}
+
+	return ""
 }
 
 //UnSubscribe removes a session from a channel
