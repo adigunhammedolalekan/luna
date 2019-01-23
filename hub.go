@@ -67,7 +67,7 @@ func (h *Hub) EnsureClean() {
 	for {
 
 		select {
-		case <- ticker.C:
+		case <-ticker.C:
 			for _, ch := range h.Channels {
 
 				for v := range ch.Clients {
@@ -141,7 +141,7 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 		}
 	}
 
-	// subscribe to channel if
+	// subscribe to channel if not already subscribed
 	if !subscribed {
 		client := &Client{}
 		client.Session = session
@@ -150,6 +150,7 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 	}
 }
 
+//
 func extractSessionKey(session *melody.Session) string {
 
 	if key, ok := session.Keys["session_token"]; ok {

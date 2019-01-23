@@ -36,10 +36,9 @@ type ExtractKeyFunc func(*http.Request) string
 
 // Config holds luna configurations
 type Config struct {
-
-	BufferSize int
+	BufferSize     int
 	MaxMessageSize int64
-	KeyExtractor ExtractKeyFunc
+	KeyExtractor   ExtractKeyFunc
 }
 
 var DefaultConfig = &Config{BufferSize: 512 * 10, MaxMessageSize: 512 * 10}
@@ -94,7 +93,7 @@ func (l *Luna) Handle(path string, f OnMessageHandler) {
 
 func (l *Luna) HandleHttpRequest(wr http.ResponseWriter, req *http.Request) error {
 
-	keys := make(map[string] interface{})
+	keys := make(map[string]interface{})
 	keys["session_token"] = l.config.KeyExtractor(req)
 	return l.melody.HandleRequestWithKeys(wr, req, keys)
 }
