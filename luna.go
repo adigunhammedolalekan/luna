@@ -17,6 +17,7 @@ type Luna struct {
 	melody *melody.Melody
 	hub    *Hub
 	routes []*Route
+	config *Config
 }
 
 type WsMessage struct {
@@ -25,11 +26,20 @@ type WsMessage struct {
 	Data   interface{} `json:"data"`
 }
 
-// Config holds luna configuration data
+// ExtractKeyFunc to assign a unique key for each session
+// can be used like :-
+//
+// keyFunc := func(r *http.Request) string {
+// 		return r.Header.Get("x-auth-token")
+// }
+type ExtractKeyFunc func(*http.Request) string
+
+// Config holds luna configurations
 type Config struct {
 
 	BufferSize int
 	MaxMessageSize int64
+	KeyExtractor ExtractKeyFunc
 }
 
 var DefaultConfig = &Config{BufferSize: 512 * 10, MaxMessageSize: 512 * 10}
@@ -43,7 +53,19 @@ func New(config *Config) *Luna {
 	}
 
 	if config == nil {
-		config = DefaultConfig
+		panic("initialize luna with a config")
+	}
+
+	if config.KeyExtractor == nil {
+		panic("KeyExtractor function is nil")
+	}
+
+	if config.MaxMessageSize == 0 {
+		config.MaxMessageSize = DefaultConfig.MaxMessageSize
+	}
+
+	if config.BufferSize == 0 {
+		config.BufferSize = DefaultConfig.BufferSize
 	}
 
 	m.Config.MessageBufferSize = config.BufferSize
@@ -73,7 +95,7 @@ func (l *Luna) Handle(path string, f OnMessageHandler) {
 func (l *Luna) HandleHttpRequest(wr http.ResponseWriter, req *http.Request) error {
 
 	keys := make(map[string] interface{})
-	keys["session_token"] = req.Header.Get("Authorization")
+	keys["session_token"] = l.config.KeyExtractor(req)
 	return l.melody.HandleRequestWithKeys(wr, req, keys)
 }
 

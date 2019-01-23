@@ -4,11 +4,20 @@ import (
 	"fmt"
 	"github.com/adigunhammedolalekan/luna"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
 
-	l := luna.New(nil)
+	keyExtractor := func(req *http.Request) string {
+		return req.Header.Get("Authorization")
+	}
+
+	config := &luna.Config{
+		KeyExtractor: keyExtractor,
+	}
+
+	l := luna.New(config)
 	g := gin.Default()
 
 	g.LoadHTMLFiles("example/files/index.html")
