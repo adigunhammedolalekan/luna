@@ -36,7 +36,7 @@ func (h *Hub) UnSubscribe(id string, session *melody.Session) {
 	}
 }
 
-//GetChannel returns a Channel identified by @param id
+// GetChannel returns a Channel identified by @param id
 func (h *Hub) GetChannel(id string) *Channel {
 
 	for _, ch := range h.Channels {
@@ -105,8 +105,8 @@ type Client struct {
 	LastSeen time.Time
 }
 
-//A message channel. Multiple clients can subscribe to a channel, message will be broadcast to all clients
-//anytime Channel.Send(data) is called
+// A message channel. Multiple clients can subscribe to a channel, message will be broadcast to all clients
+// anytime Channel.Send(data) is called
 type Channel struct {
 	Id      string
 	Mtx     sync.Mutex
@@ -121,7 +121,7 @@ func (ch *Channel) UnLock() {
 	ch.Mtx.Unlock()
 }
 
-//Subscribe subscribes a session to a client.
+// Subscribe subscribes a session to a client.
 func (ch *Channel) Subscribe(session *melody.Session) {
 
 	ch.Lock()
@@ -154,7 +154,7 @@ func (ch *Channel) Subscribe(session *melody.Session) {
 func extractSessionKey(session *melody.Session) string {
 
 	if key, ok := session.Keys["session_token"]; ok {
-		value, ok := key . (string)
+		value, ok := key.(string)
 		if ok {
 			return value
 		}
@@ -163,7 +163,7 @@ func extractSessionKey(session *melody.Session) string {
 	return ""
 }
 
-//UnSubscribe removes a session from a channel
+// UnSubscribe removes a session from a channel
 func (ch *Channel) UnSubscribe(session *melody.Session) {
 
 	ch.Lock()
@@ -177,7 +177,7 @@ func (ch *Channel) UnSubscribe(session *melody.Session) {
 	}
 }
 
-//Send broadcast message to all connected clients and update their last activity time
+// Send broadcast message to all connected clients and update their last activity time
 func (ch *Channel) Send(data interface{}) error {
 
 	value, err := json.Marshal(data)

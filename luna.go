@@ -43,7 +43,7 @@ type Config struct {
 
 var DefaultConfig = &Config{BufferSize: 512 * 10, MaxMessageSize: 512 * 10}
 
-//New creates a new Luna instance
+// New creates a new Luna instance
 func New(config *Config) *Luna {
 
 	m := melody.New()
@@ -82,7 +82,7 @@ func New(config *Config) *Luna {
 	return luna
 }
 
-//Handle registers a new Route
+// Handle registers a new Route
 func (l *Luna) Handle(path string, f OnMessageHandler) {
 
 	route := &Route{}
@@ -98,7 +98,7 @@ func (l *Luna) HandleHttpRequest(wr http.ResponseWriter, req *http.Request) erro
 	return l.melody.HandleRequestWithKeys(wr, req, keys)
 }
 
-//handleMessages starts to listen for new websocket events on a seperate goroutine
+// handleMessages starts to listen for new websocket events on a seperate goroutine
 func (l *Luna) handleMessages() {
 
 	l.melody.HandleMessage(func(session *melody.Session, bytes []byte) {
@@ -120,18 +120,15 @@ func (l *Luna) handleMessages() {
 			l.hub.Send(message.Path, message.Data)
 			for _, route := range l.routes {
 
-				fmt.Println("Route => ", route.Path)
-				fmt.Println("Message Route => ", message.Path)
 				if MatchRoute(route.Path, message.Path) {
 
-					fmt.Println("Match!")
 					if route.OnNewMessage != nil {
 						ctx := &Context{}
 						ctx.Path = message.Path
 						ctx.Vars, _ = ExtractParams(route.Path, message.Path)
-						ctx.Data = message.Data
 
-						fmt.Println("Called")
+						bytes, _ := json.Marshal(message.Data)
+						ctx.Data = bytes
 						route.OnNewMessage(ctx)
 					}
 				}
