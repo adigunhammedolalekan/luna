@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="43c0cbed-a67c-4e40-8038-02a84693499e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,16 +14,18 @@
     <session id="485766463">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.31" value="3" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.54" value="1" />
@@ -33,7 +34,7 @@
           <entry key="project.open.time.71" value="1" />
           <entry key="project.open.time.84" value="1" />
           <entry key="project.open.time.99" value="1" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -41,99 +42,49 @@
           <entry key="LICENSE" value="1" />
           <entry key="MD" value="3" />
           <entry key="PNG" value="2" />
-          <entry key="go" value="79" />
+          <entry key="go" value="80" />
           <entry key="html" value="4" />
           <entry key="js" value="4" />
+          <entry key="yaml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="79" />
+          <entry key="Go" value="80" />
           <entry key="HTML" value="4" />
           <entry key="Image" value="2" />
           <entry key="JavaScript" value="4" />
           <entry key="PLAIN_TEXT" value="4" />
+          <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="MD" value="1576" />
-          <entry key="go" value="9163" />
+          <entry key="go" value="9183" />
           <entry key="html" value="380" />
           <entry key="js" value="693" />
+          <entry key="yaml" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="9163" />
+          <entry key="Go" value="9183" />
           <entry key="HTML" value="380" />
           <entry key="JavaScript" value="693" />
           <entry key="PLAIN_TEXT" value="1576" />
+          <entry key="YAML" value="29" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hub.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2352">
-              <caret line="152" column="2" selection-start-line="152" selection-start-column="2" selection-end-line="152" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/main.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/context.go">
+        <entry file="file://$PROJECT_DIR$/example/example.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/context_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/luna.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../olahol/melody/melody.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2736">
-              <caret line="177" column="19" selection-start-line="177" selection-start-column="19" selection-end-line="177" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.MD">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-551">
-              <caret line="92" column="79" selection-start-line="92" selection-start-column="79" selection-end-line="92" selection-end-column="79" />
+            <state relative-caret-position="80">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -168,9 +119,10 @@
         <option value="$PROJECT_DIR$/context.go" />
         <option value="$PROJECT_DIR$/context_test.go" />
         <option value="$PROJECT_DIR$/example/main.go" />
+        <option value="$PROJECT_DIR$/README.MD" />
         <option value="$PROJECT_DIR$/luna.go" />
         <option value="$PROJECT_DIR$/hub.go" />
-        <option value="$PROJECT_DIR$/README.MD" />
+        <option value="$PROJECT_DIR$/example/example.yaml" />
       </list>
     </option>
   </component>
@@ -219,7 +171,7 @@
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bitbucket.org/specialbrands/ateps-configuration" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -347,9 +299,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30257186" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3207262" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,7 +312,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3878887" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3878887" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -454,13 +405,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/art/web.PNG">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hub_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://C:/Go/src/net/http/cgi/child.go">
       <provider selected="true" editor-type-id="text-editor">
@@ -575,27 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hub.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2352">
-          <caret line="152" column="2" selection-start-line="152" selection-start-column="2" selection-end-line="152" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/context_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/luna.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../olahol/melody/melody.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2736">
@@ -617,10 +540,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/luna.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/context.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="-254">
           <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hub.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="38" column="3" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hub_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/context_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/example.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
         </state>
       </provider>
     </entry>

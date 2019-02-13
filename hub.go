@@ -72,11 +72,12 @@ func (h *Hub) EnsureClean() {
 
 				for v := range ch.Clients {
 
-					if v != nil {
-						if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
+					if v == nil {
+						continue
+					}
 
-							delete(ch.Clients, v)
-						}
+					if t := time.Now().Sub(v.LastSeen); t.Minutes() >= 10 && v.Session.IsClosed() {
+						delete(ch.Clients, v)
 					}
 				}
 			}
