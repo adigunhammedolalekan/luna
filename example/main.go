@@ -36,8 +36,6 @@ func main() {
 		fmt.Println("Path Data => ", context.Vars)
 		fmt.Println("Message => ", context.Data)
 
-		data := context.Data . (map[string] interface{})
-		fmt.Println(data["text"])
 	})
 
 	g.Run("0.0.0.0:8009")

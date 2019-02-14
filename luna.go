@@ -76,6 +76,7 @@ func New(config *Config) *Luna {
 		melody: m,
 		hub:    h,
 		routes: make([]*Route, 0),
+		config: config,
 	}
 
 	go luna.handleMessages()
